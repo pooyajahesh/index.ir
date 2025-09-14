@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شرکت گسترده کام پویا جهش</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+/* --- رنگ‌ها --- */
+:root{
+  --bg-color:#0d1117;
+  --header-bg:#001a33;
+  --nav-bg:#001022;
+  --text-color:#e6f1ff;
+  --accent-color:#00ffff;
+  --card-bg:rgba(10,14,25,0.85);
+  --footer-bg:#001022;
+  --active-link:#00ffcc;
+}
+
+/* --- بدنه و اسکرول نرم --- */
+html { scroll-behavior: smooth; }
+body{ margin:0; font-family:'Vazirmatn',sans-serif; background: var(--bg-color); color: var(--text-color); line-height:1.8; overflow-x:hidden; transition:0.5s all; }
+
+/* --- هدر نئون 3D --- */
+header{ background: linear-gradient(135deg, #002244, #004488); color: var(--accent-color); padding:60px 20px; text-align:center; box-shadow:0 0 50px rgba(0,255,255,0.6); perspective:1000px; }
+header h1{ font-size:3rem; margin:0 0 15px; color: var(--accent-color); text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff; transform: rotateX(0deg) rotateY(0deg); animation: float 3s ease-in-out infinite alternate; }
+header p{ font-size:1.3rem; color:#cceeff; }
+
+/* --- ناوبری با خط متحرک --- */
+nav{ background: var(--nav-bg); padding:15px; text-align:center; position:sticky; top:0; z-index:1000; box-shadow:0 2px 15px rgba(0,0,0,0.7); position:relative; }
+nav a{ color: var(--text-color); margin:0 20px; text-decoration:none; font-weight:bold; transition:0.3s all; position:relative; }
+nav a:hover, nav a.active{ color: var(--active-link); }
+#nav-underline{
+  position:absolute;
+  height:3px;
+  background: var(--accent-color);
+  bottom:0;
+  left:0;
+  width:0;
+  transition:0.4s all;
+  border-radius:2px;
+}
+
+/* --- هرو --- */
+.hero{ height:500px; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; background:url('https://i.ibb.co/7GdFHTz/cctv-hero.jpg') no-repeat center/cover; }
+.hero h2{ font-size:3rem; color:#00ffff; background: rgba(0,0,0,0.6); padding:25px 40px; border-radius:15px; text-shadow:0 0 15px #00ffff,0 0 30px #00ffff,0 0 50px #00ffff; animation: glow 2s infinite alternate; }
+
+@keyframes glow{ from{ text-shadow:0 0 10px #00ffff,0 0 20px #00ffff; } to{ text-shadow:0 0 30px #00ffff,0 0 60px #00ffff; } }
+@keyframes float{ 0%{ transform: rotateX(0deg) rotateY(0deg);} 50%{ transform: rotateX(2deg) rotateY(2deg);} 100%{ transform: rotateX(-2deg) rotateY(-2deg);} }
+
+/* --- سکشن‌ها --- */
+section{ padding:80px 20px; text-align:center; opacity:0; transform: translateY(50px); transition:1s all; }
+section.visible{ opacity:1; transform:translateY(0); }
+section h2{ color:var(--accent-color); font-size:2.5rem; margin-bottom:40px; text-shadow:0 0 15px var(--accent-color); }
+
+/* --- کارت‌ها --- */
+.services{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:30px; }
+.card{ background:var(--card-bg); backdrop-filter:blur(12px); border-radius:20px; padding:25px; box-shadow:0 0 25px rgba(0,255,255,0.2); transition:0.6s all; transform-style: preserve-3d; position:relative; overflow:hidden; cursor:pointer; }
+.card img{ width:100%; border-radius:12px; margin-bottom:20px; }
+.card h3, .card p{ color:#e6f1ff; }
+
+/* --- دایره‌ها --- */
+.stats{ display:flex; justify-content:center; gap:60px; flex-wrap:wrap; margin-top:50px; }
+.progress-circle{ position:relative; width:180px; height:180px; }
+.progress-circle svg{ transform: rotate(-90deg); width:180px; height:180px; }
+.progress-circle circle{ fill:none; stroke-width:14; stroke-linecap:round; transition: stroke 0.5s ease; }
+.progress-circle .bg{ stroke:#004488; }
+.progress-circle .progress{ stroke: var(--accent-color); stroke-dasharray:440; stroke-dashoffset:440; transition: stroke-dashoffset 1.5s cubic-bezier(0.65,0,0.35,1); }
+.progress-circle .number{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+.progress-circle .number h3{ margin:0; font-size:1.8rem; color:var(--accent-color); }
+.progress-circle .number p{ margin:0; font-size:1rem; color:#ccc; }
+
+/* --- فوتر --- */
+footer{ background: var(--footer-bg); color:#ccc; padding:30px; text-align:center; margin-top:50px; box-shadow:0 -3px 20px rgba(0,0,0,0.6); backdrop-filter:blur(8px); transition:0.5s all; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>شرکت گسترده کام پویا جهش</h1>
+  <p>امنیت، آرامش و اعتماد شما اولویت ماست</p>
+</header>
+
+<nav>
+  <a href="#home" class="nav-link">خانه</a>
+  <a href="#about" class="nav-link">درباره ما</a>
+  <a href="#services" class="nav-link">خدمات</a>
+  <a href="#stats" class="nav-link">سابقه و شعبه‌ها</a>
+  <a href="#contact" class="nav-link">تماس با ما</a>
+  <div id="nav-underline"></div>
+</nav>
+
+<div class="hero" id="home">
+  <h2>امنیت شما، تخصص ماست</h2>
+</div>
+
+<section id="about">
+  <h2>درباره ما</h2>
+  <p>شرکت گسترده کام پویا جهش با سال‌ها تجربه در زمینه <strong>دوربین‌های مداربسته</strong> و <strong>سیستم‌های دزدگیر</strong>، همواره در تلاش بوده تا بهترین خدمات امنیتی را ارائه دهد.</p>
+</section>
+
+<section id="services">
+  <h2>خدمات ما</h2>
+  <div class="services">
+    <div class="card">
+      <img src="https://s6.uupload.ir/files/file_00000000dcc861fd9b52bcfc13eade59_u75u.png" alt="دوربین مداربسته">
+      <h3>نصب دوربین مداربسته</h3>
+      <p>نصب و راه‌اندازی انواع دوربین‌های مداربسته با کیفیت بالا و پوشش کامل.</p>
+    </div>
+    <div class="card">
+      <img src="https://s6.uupload.ir/files/file_00000000348461f7ae1514dc8c2daf4a_oc0b.png" alt="سیستم دزدگیر">
+      <h3>سیستم‌های دزدگیر</h3>
+      <p>نصب و پیکربندی سیستم‌های دزدگیر خانگی و صنعتی با بالاترین استاندارد.</p>
+    </div>
+    <div class="card">
+      <img src="https://i.ibb.co/7R59Bk9/support.jpg" alt="پشتیبانی ۲۴ ساعته">
+      <h3>پشتیبانی ۲۴ ساعته</h3>
+      <p>خدمات پس از فروش و پشتیبانی شبانه‌روزی برای آسودگی خاطر مشتریان.</p>
+    </div>
+  </div>
+</section>
+
+<section id="stats">
+  <h2>سابقه و شعبه‌ها</h2>
+  <div class="stats">
+    <div class="progress-circle" data-value="7">
+      <svg><circle class="bg" cx="90" cy="90" r="70"></circle><circle class="progress" cx="90" cy="90" r="70"></circle></svg>
+      <div class="number"><h3>0</h3><p>سال سابقه</p></div>
+    </div>
+    <div class="progress-circle" data-value="74">
+      <svg><circle class="bg" cx="90" cy="90" r="70"></circle><circle class="progress" cx="90" cy="90" r="70"></circle></svg>
+      <div class="number"><h3>0</h3><p>شعبه فعال</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <p>© 2025 شرکت گسترده کام پویا جهش</p>
+  <p>تماس: 0912xxxxxxx | ایمیل: info@gkpj.ir</p>
+</footer>
+
+<script>
+// --- خط زیر لینک فعال ---
+const navLinks=document.querySelectorAll('.nav-link');
+const underline=document.getElementById('nav-underline');
+function moveUnderline(el){
+  underline.style.width=el.offsetWidth+'px';
+  underline.style.left=el.offsetLeft+'px';
+}
+window.addEventListener('resize',()=>{
+  const active=document.querySelector('.nav-link.active');
+  if(active) moveUnderline(active);
+});
+
+// --- لینک فعال با اسکرول ---
+const sections=document.querySelectorAll('section, .hero');
+const sectionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(link=>link.classList.remove('active'));
+      const id=entry.target.getAttribute('id');
+      const activeLink=document.querySelector(`nav a[href="#${id}"]`);
+      if(activeLink){
+        activeLink.classList.add('active');
+        moveUnderline(activeLink);
+      }
+    }
+  });
+},{threshold:0.6});
+sections.forEach(section=>sectionObserver.observe(section));
+
+// --- شروع با خانه ---
+const homeLink=document.querySelector('nav a[href="#home"]');
+moveUnderline(homeLink);
+
+// --- انیمیشن ظاهر شدن سکشن‌ها ---
+sections.forEach(sec=>{
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {threshold:0.2});
+  obs.observe(sec);
+});
+
+// --- دایره‌ها با شروع و ریست هنگام اسکرول ---
+const statsSection=document.getElementById('stats');
+const stats=document.querySelectorAll(".progress-circle");
+const statsObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      // شمارش دوباره
+      stats.forEach(circle=>{
+        let value=+circle.getAttribute("data-value");
+        let number=circle.querySelector("h3");
+        let progress=circle.querySelector(".progress");
+        let r=70;
+        let circumference=2*Math.PI*r;
+        progress.style.strokeDasharray=circumference;
+        progress.style.strokeDashoffset=circumference;
+        number.textContent=0;
+        let current=0;
+        let speed=20;
+        let interval=setInterval(()=>{
+          if(current>=value) clearInterval(interval);
+          else{
+            current++;
+            number.textContent=current;
+            progress.style.strokeDashoffset = circumference - (current/100*circumference);
+          }
+        },speed);
+      });
+    } else {
+      // ریست دایره‌ها وقتی خارج از دید شدند
+      stats.forEach(circle=>{
+        let number=circle.querySelector("h3");
+        let progress=circle.querySelector(".progress");
+        number.textContent=0;
+        progress.style.strokeDashoffset = 2*Math.PI*70;
+      });
+    }
+  });
+},{threshold:0.5});
+statsObserver.observe(statsSection);
+</script>
+
+</body>
+</html>
