@@ -7,7 +7,6 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
-/* --- رنگ‌ها --- */
 :root{
   --bg-color:#0d1117;
   --header-bg:#001a33;
@@ -19,49 +18,103 @@
   --active-link:#00ffcc;
 }
 
-/* --- بدنه و اسکرول نرم --- */
 html { scroll-behavior: smooth; }
 body{ margin:0; font-family:'Vazirmatn',sans-serif; background: var(--bg-color); color: var(--text-color); line-height:1.8; overflow-x:hidden; transition:0.5s all; }
 
-/* --- هدر نئون 3D --- */
-header{ background: linear-gradient(135deg, #002244, #004488); color: var(--accent-color); padding:60px 20px; text-align:center; box-shadow:0 0 50px rgba(0,255,255,0.6); perspective:1000px; }
-header h1{ font-size:3rem; margin:0 0 15px; color: var(--accent-color); text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff; transform: rotateX(0deg) rotateY(0deg); animation: float 3s ease-in-out infinite alternate; }
+/* ===== هدر ===== */
+header{
+  background: linear-gradient(135deg, #002244, #004488);
+  color: var(--accent-color);
+  padding:60px 20px;
+  text-align:center;
+  box-shadow:0 0 50px rgba(0,255,255,0.6);
+  perspective:1000px;
+}
+header h1{
+  font-size:3rem;
+  margin:0 0 15px;
+  color: var(--accent-color);
+  text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff;
+  animation: float 3s ease-in-out infinite alternate;
+}
 header p{ font-size:1.3rem; color:#cceeff; }
 
-/* --- ناوبری با خط متحرک --- */
-nav{ background: var(--nav-bg); padding:15px; text-align:center; position:sticky; top:0; z-index:1000; box-shadow:0 2px 15px rgba(0,0,0,0.7); position:relative; }
-nav a{ color: var(--text-color); margin:0 20px; text-decoration:none; font-weight:bold; transition:0.3s all; position:relative; }
-nav a:hover, nav a.active{ color: var(--active-link); }
-#nav-underline{
-  position:absolute;
-  height:3px;
-  background: var(--accent-color);
-  bottom:0;
-  left:0;
-  width:0;
-  transition:0.4s all;
-  border-radius:2px;
+@keyframes float{
+  0%{ transform: rotateX(0deg) rotateY(0deg);}
+  50%{ transform: rotateX(2deg) rotateY(2deg);}
+  100%{ transform: rotateX(-2deg) rotateY(-2deg);}
 }
 
-/* --- هرو --- */
-.hero{ height:500px; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; overflow:hidden; background:url('https://i.ibb.co/7GdFHTz/cctv-hero.jpg') no-repeat center/cover; }
-.hero h2{ font-size:3rem; color:#00ffff; background: rgba(0,0,0,0.6); padding:25px 40px; border-radius:15px; text-shadow:0 0 15px #00ffff,0 0 30px #00ffff,0 0 50px #00ffff; animation: glow 2s infinite alternate; }
+/* ===== منو ===== */
+nav{
+  background: var(--nav-bg);
+  padding:15px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 15px rgba(0,0,0,0.7);
+}
+nav a{
+  color: var(--text-color);
+  margin:0 25px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s all;
+}
+nav a:hover, nav a.active{ color: var(--active-link); }
 
-@keyframes glow{ from{ text-shadow:0 0 10px #00ffff,0 0 20px #00ffff; } to{ text-shadow:0 0 30px #00ffff,0 0 60px #00ffff; } }
-@keyframes float{ 0%{ transform: rotateX(0deg) rotateY(0deg);} 50%{ transform: rotateX(2deg) rotateY(2deg);} 100%{ transform: rotateX(-2deg) rotateY(-2deg);} }
+/* ===== بخش شعار (Hero) ===== */
+.hero{
+  height:500px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:url('https://s6.uupload.ir/files/chatgpt_image_sep_14,_2025,_11_13_51_pm_vm6f.png') no-repeat center/cover;
+  position:relative;
+}
+.hero h2{
+  font-size:3rem;
+  color:#00ffff;
+  background: rgba(0,0,0,0.6);
+  padding:25px 40px;
+  border-radius:15px;
+  text-shadow:0 0 15px #00ffff,0 0 30px #00ffff,0 0 50px #00ffff;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow{
+  from{ text-shadow:0 0 10px #00ffff,0 0 20px #00ffff; }
+  to{ text-shadow:0 0 30px #00ffff,0 0 60px #00ffff; }
+}
 
-/* --- سکشن‌ها --- */
-section{ padding:80px 20px; text-align:center; opacity:0; transform: translateY(50px); transition:1s all; }
+section{
+  padding:80px 20px;
+  text-align:center;
+  opacity:0;
+  transform: translateY(50px);
+  transition:1s all;
+  position:relative;
+}
 section.visible{ opacity:1; transform:translateY(0); }
 section h2{ color:var(--accent-color); font-size:2.5rem; margin-bottom:40px; text-shadow:0 0 15px var(--accent-color); }
 
-/* --- کارت‌ها --- */
-.services{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:30px; }
-.card{ background:var(--card-bg); backdrop-filter:blur(12px); border-radius:20px; padding:25px; box-shadow:0 0 25px rgba(0,255,255,0.2); transition:0.6s all; transform-style: preserve-3d; position:relative; overflow:hidden; cursor:pointer; }
-.card img{ width:100%; border-radius:12px; margin-bottom:20px; }
-.card h3, .card p{ color:#e6f1ff; }
+/* خط جداکننده متحرک */
+.section-divider {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: move-line 3s linear infinite;
+}
+@keyframes move-line {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
 
-/* --- دایره‌ها --- */
+/* ===== شمارنده ===== */
 .stats{ display:flex; justify-content:center; gap:60px; flex-wrap:wrap; margin-top:50px; }
 .progress-circle{ position:relative; width:180px; height:180px; }
 .progress-circle svg{ transform: rotate(-90deg); width:180px; height:180px; }
@@ -72,35 +125,119 @@ section h2{ color:var(--accent-color); font-size:2.5rem; margin-bottom:40px; tex
 .progress-circle .number h3{ margin:0; font-size:1.8rem; color:var(--accent-color); }
 .progress-circle .number p{ margin:0; font-size:1rem; color:#ccc; }
 
-/* --- فوتر --- */
-footer{ background: var(--footer-bg); color:#ccc; padding:30px; text-align:center; margin-top:50px; box-shadow:0 -3px 20px rgba(0,0,0,0.6); backdrop-filter:blur(8px); transition:0.5s all; }
+/* ===== خدمات ===== */
+.services{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:30px; }
+.card{ 
+  background:var(--card-bg);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 0 25px rgba(0,255,255,0.2);
+  transition:0.6s all;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+.card img{ width:100%; border-radius:12px; margin-bottom:20px; }
+.card h3, .card p{ color:#e6f1ff; }
+.card:hover{
+  box-shadow:0 0 40px rgba(0,255,255,0.8);
+  transform: scale(1.05);
+}
+
+/* ===== مودال درباره ما ===== */
+.modal{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:0.5s ease;
+  z-index:2000;
+}
+.modal.active{
+  opacity:1;
+  visibility:visible;
+}
+.modal-content{
+  background:var(--card-bg);
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,255,255,0.7);
+  width:80%;
+  max-width:600px;
+  transform:scale(0.7) rotateY(20deg);
+  transition:0.5s ease;
+  text-align:center;
+}
+.modal.active .modal-content{
+  transform:scale(1) rotateY(0deg);
+}
+.modal-content h2{ color:var(--accent-color); margin-bottom:20px; }
+.modal-content p{ color:#ccc; }
+.close-btn{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:2rem;
+  color:var(--accent-color);
+  cursor:pointer;
+  transition:0.3s;
+}
+.close-btn:hover{ color:#ff5555; }
+
+/* ===== فوتر ===== */
+footer{
+  background: var(--footer-bg);
+  color:#ccc;
+  padding:30px;
+  text-align:center;
+  margin-top:50px;
+  box-shadow:0 -3px 20px rgba(0,0,0,0.6);
+  backdrop-filter:blur(8px);
+  transition:0.5s all;
+}
 </style>
 </head>
 <body>
 
 <header>
   <h1>شرکت گسترده کام پویا جهش</h1>
-  <p>امنیت، آرامش و اعتماد شما اولویت ماست</p>
+  <p>امنیت و آرامش خود را به ما بسپارید.</p>
 </header>
 
+<!-- ===== منو ===== -->
 <nav>
-  <a href="#home" class="nav-link">خانه</a>
-  <a href="#about" class="nav-link">درباره ما</a>
-  <a href="#services" class="nav-link">خدمات</a>
-  <a href="#stats" class="nav-link">سابقه و شعبه‌ها</a>
-  <a href="#contact" class="nav-link">تماس با ما</a>
-  <div id="nav-underline"></div>
+  <a href="#home" class="nav-link active">خانه</a>
+  <a href="#about-modal" id="about-link">درباره ما</a>
 </nav>
 
+<!-- ===== بخش شعار ===== -->
 <div class="hero" id="home">
-  <h2>امنیت شما، تخصص ماست</h2>
+  <h2>امنیت و آرامش شما اولویت ماست</h2>
 </div>
 
-<section id="about">
-  <h2>درباره ما</h2>
-  <p>شرکت گسترده کام پویا جهش با سال‌ها تجربه در زمینه <strong>دوربین‌های مداربسته</strong> و <strong>سیستم‌های دزدگیر</strong>، همواره در تلاش بوده تا بهترین خدمات امنیتی را ارائه دهد.</p>
+<!-- ===== شمارنده ===== -->
+<section id="stats">
+  <h2>سابقه و شعبه‌ها</h2>
+  <div class="stats">
+    <div class="progress-circle" data-value="7">
+      <svg><circle class="bg" cx="90" cy="90" r="70"></circle><circle class="progress" cx="90" cy="90" r="70"></circle></svg>
+      <div class="number"><h3>0</h3><p>سال سابقه</p></div>
+    </div>
+    <div class="progress-circle" data-value="72">
+      <svg><circle class="bg" cx="90" cy="90" r="70"></circle><circle class="progress" cx="90" cy="90" r="70"></circle></svg>
+      <div class="number"><h3>0</h3><p>شعبه فعال</p></div>
+    </div>
+  </div>
+  <div class="section-divider"></div>
 </section>
 
+<!-- ===== خدمات ===== -->
 <section id="services">
   <h2>خدمات ما</h2>
   <div class="services">
@@ -115,85 +252,65 @@ footer{ background: var(--footer-bg); color:#ccc; padding:30px; text-align:cente
       <p>نصب و پیکربندی سیستم‌های دزدگیر خانگی و صنعتی با بالاترین استاندارد.</p>
     </div>
     <div class="card">
-      <img src="https://i.ibb.co/7R59Bk9/support.jpg" alt="پشتیبانی ۲۴ ساعته">
+      <img src="https://s6.uupload.ir/files/chatgpt_image_sep_14,_2025,_11_46_55_pm_rzfa.png" alt="پشتیبانی ۲۴ ساعته">
       <h3>پشتیبانی ۲۴ ساعته</h3>
-      <p>خدمات پس از فروش و پشتیبانی شبانه‌روزی برای آسودگی خاطر مشتریان.</p>
+      <p>پشتیبانی آنلاین و 24 ساعته با همکاران ما.</p>
     </div>
   </div>
+  <div class="section-divider"></div>
 </section>
 
-<section id="stats">
-  <h2>سابقه و شعبه‌ها</h2>
-  <div class="stats">
-    <div class="progress-circle" data-value="7">
-      <svg><circle class="bg" cx="90" cy="90" r="70"></circle><circle class="progress" cx="90" cy="90" r="70"></circle></svg>
-      <div class="number"><h3>0</h3><p>سال سابقه</p></div>
-    </div>
-    <div class="progress-circle" data-value="74">
-      <svg><circle class="bg" cx="90" cy="90" r="70"></circle><circle class="progress" cx="90" cy="90" r="70"></circle></svg>
-      <div class="number"><h3>0</h3><p>شعبه فعال</p></div>
-    </div>
+<!-- ===== مودال درباره ما ===== -->
+<div class="modal" id="about-modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>درباره ما</h2>
+    <p>شرکت گسترده کام پویا جهش با سال‌ها تجربه در زمینه <strong>دوربین‌های مداربسته</strong> و <strong>سیستم‌های دزدگیر</strong>، همواره در تلاش بوده تا بهترین خدمات امنیتی را ارائه دهد و آرامش و اعتماد را برای مشتریان خود به ارمغان آورد.</p>
   </div>
-</section>
+</div>
 
-<footer id="contact">
+<!-- ===== فوتر ===== -->
+<footer>
   <p>© 2025 شرکت گسترده کام پویا جهش</p>
   <p>تماس: 0912xxxxxxx | ایمیل: info@gkpj.ir</p>
 </footer>
 
 <script>
-// --- خط زیر لینک فعال ---
-const navLinks=document.querySelectorAll('.nav-link');
-const underline=document.getElementById('nav-underline');
-function moveUnderline(el){
-  underline.style.width=el.offsetWidth+'px';
-  underline.style.left=el.offsetLeft+'px';
-}
-window.addEventListener('resize',()=>{
-  const active=document.querySelector('.nav-link.active');
-  if(active) moveUnderline(active);
+// نمایش مودال درباره ما
+const aboutLink = document.getElementById('about-link');
+const modal = document.getElementById('about-modal');
+const closeBtn = document.querySelector('.close-btn');
+
+aboutLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  modal.classList.add('active');
+});
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+  }
 });
 
-// --- لینک فعال با اسکرول ---
+// انیمیشن سکشن‌ها هنگام اسکرول
 const sections=document.querySelectorAll('section, .hero');
-const sectionObserver=new IntersectionObserver(entries=>{
+const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      navLinks.forEach(link=>link.classList.remove('active'));
-      const id=entry.target.getAttribute('id');
-      const activeLink=document.querySelector(`nav a[href="#${id}"]`);
-      if(activeLink){
-        activeLink.classList.add('active');
-        moveUnderline(activeLink);
-      }
+      entry.target.classList.add('visible');
     }
   });
-},{threshold:0.6});
-sections.forEach(section=>sectionObserver.observe(section));
+},{threshold:0.2});
+sections.forEach(section=>observer.observe(section));
 
-// --- شروع با خانه ---
-const homeLink=document.querySelector('nav a[href="#home"]');
-moveUnderline(homeLink);
-
-// --- انیمیشن ظاهر شدن سکشن‌ها ---
-sections.forEach(sec=>{
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {threshold:0.2});
-  obs.observe(sec);
-});
-
-// --- دایره‌ها با شروع و ریست هنگام اسکرول ---
+// انیمیشن شمارنده‌ها
 const statsSection=document.getElementById('stats');
 const stats=document.querySelectorAll(".progress-circle");
 const statsObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      // شمارش دوباره
       stats.forEach(circle=>{
         let value=+circle.getAttribute("data-value");
         let number=circle.querySelector("h3");
@@ -215,7 +332,6 @@ const statsObserver=new IntersectionObserver(entries=>{
         },speed);
       });
     } else {
-      // ریست دایره‌ها وقتی خارج از دید شدند
       stats.forEach(circle=>{
         let number=circle.querySelector("h3");
         let progress=circle.querySelector(".progress");
@@ -225,6 +341,7 @@ const statsObserver=new IntersectionObserver(entries=>{
     }
   });
 },{threshold:0.5});
+
 statsObserver.observe(statsSection);
 </script>
 
